@@ -4,9 +4,9 @@ package main
 // $ ./program a=23,45 b=1,3.43
 
 import (
+	"flag"
 	"fmt"
 	"math"
-	"os"
 	"strconv"
 )
 
@@ -26,17 +26,22 @@ func (p1 *Point) calcDistance(p2 *Point) float64 {
 
 func main() {
 
-	argsWithoutProg := os.Args[0:]
-	point1x, _ := strconv.ParseFloat(argsWithoutProg[1], 64)
-	point1y, _ := strconv.ParseFloat(argsWithoutProg[2], 64)
+	point1xPtr := flag.Float64("p1x", 0, "First point x")
+	point1yPtr := flag.Float64("p1y", 0, "First point y")
 
-	point2x, _ := strconv.ParseFloat(argsWithoutProg[3], 64)
-	point2y, _ := strconv.ParseFloat(argsWithoutProg[4], 64)
+	point2xPtr := flag.Float64("p2x", 0, "Second point x")
+	point2yPtr := flag.Float64("p2y", 0, "Second point y")
+
+	flag.Parse()
+
+	point1x := *point1xPtr
+	point1y := *point1yPtr
+	point2x := *point2xPtr
+	point2y := *point2yPtr
 
 	point1 := &Point{x: point1x, y: point1y}
 	point2 := &Point{x: point2x, y: point2y}
 
 	distance := point1.calcDistance(point2)
-
 	fmt.Printf("Distance is: %s \n", strconv.FormatFloat(distance, 'f', 4, 64))
 }

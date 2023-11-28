@@ -3,27 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"lesson1/ex1"
 	_ "os"
 	"strconv"
 )
 
-// Дана переменная int64. Разработать программу которая устанавливает i-й бит в 1 или 0.
-// $ ./program x 92323232323345 i 2
-
-func setIthBit(number, i, theBit int) int {
-	var newNumber, bitMask int
-	bitMask = 1 << i
-	if theBit == 0 {
-		newNumber = number & ^bitMask
-	} else {
-		newNumber = number | bitMask
-	}
-
-	return newNumber
-}
-
 func main() {
-
 	numPtr := flag.Int("num", 0, "Number")
 	idxPtr := flag.Int("i", 0, "Index")
 	toBitPtr := flag.Int("toBit", 0, "To bit")
@@ -32,7 +17,7 @@ func main() {
 	numOfIdx := *idxPtr
 	theNum := *numPtr
 	toBit := *toBitPtr
-	result := setIthBit(theNum, numOfIdx, toBit)
+	result := ex1.SetIthBit(theNum, numOfIdx, toBit)
 
 	fmt.Println("num", theNum)
 	fmt.Println("idx", numOfIdx)

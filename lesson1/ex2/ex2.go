@@ -1,4 +1,4 @@
-package main
+package ex2
 
 // Разработать программу нахождения расстояния между двумя точками, которые представлены в виде структуры Point с инкапсулированными параметрами x,y и конструктором.
 // $ ./program a=23,45 b=1,3.43
@@ -19,7 +19,7 @@ func (p1 *Point) Add(p2 *Point) *Point {
 	return &Point{x: p1.x + p2.x, y: p1.y + p2.y}
 }
 
-func (p1 *Point) calcDistance(p2 *Point) float64 {
+func (p1 *Point) CalcDistance(p2 *Point) float64 {
 	// AB = √(xb - xa)2 + (yb - ya)2
 	return math.Sqrt((p1.y-p1.x)*2 + (p2.y-p2.x)*2)
 }
@@ -42,6 +42,6 @@ func main() {
 	point1 := &Point{x: point1x, y: point1y}
 	point2 := &Point{x: point2x, y: point2y}
 
-	distance := point1.calcDistance(point2)
+	distance := point1.CalcDistance(point2)
 	fmt.Printf("Distance is: %s \n", strconv.FormatFloat(distance, 'f', 4, 64))
 }

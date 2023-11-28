@@ -1,0 +1,7 @@
+go 1.19
+
+use (
+	./example/hello
+	./lesson1
+	./lesson2
+)

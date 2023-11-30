@@ -1,3 +1,3 @@
-module lesson1
+module solveryGoLessons
 
-go 1.21.3
+go 1.19

@@ -15,6 +15,13 @@ type Point struct {
 	y float64
 }
 
+func NewPoint(x, y float64) *Point {
+    p := new(Point)
+    p.x = x
+    p.y = y // <- a very sensible default value
+    return p
+}
+
 func (p1 *Point) Add(p2 *Point) *Point {
 	return &Point{x: p1.x + p2.x, y: p1.y + p2.y}
 }
@@ -34,13 +41,15 @@ func main() {
 
 	flag.Parse()
 
-	point1x := *point1xPtr
-	point1y := *point1yPtr
-	point2x := *point2xPtr
-	point2y := *point2yPtr
+	point1 := NewPoint(*point1xPtr, *point1yPtr)
+	point2 := NewPoint(*point2xPtr, *point2yPtr)
+	// point1x := *point1xPtr
+	// point1y := *point1yPtr
+	// point2x := *point2xPtr
+	// point2y := *point2yPtr
 
-	point1 := &Point{x: point1x, y: point1y}
-	point2 := &Point{x: point2x, y: point2y}
+	// point1 := &Point{x: point1x, y: point1y}
+	// point2 := &Point{x: point2x, y: point2y}
 
 	distance := point1.CalcDistance(point2)
 	fmt.Printf("Distance is: %s \n", strconv.FormatFloat(distance, 'f', 4, 64))

@@ -1,0 +1,7 @@
+go 1.19
+
+use (
+	./lesson1
+	./lesson2
+	./lesson3
+)
